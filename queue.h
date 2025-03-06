@@ -41,6 +41,13 @@ Queue* allocateQueue(unsigned int sizeOfElement);
 void enqueue(Queue* queue, void* element);
 
 /**
+ * @brief Remove the first element of the queue.
+ * @param queue A pointer to a queue.
+ * @return A pointer to the element. It is necessary to release manually.
+ */
+void* dequeue(Queue* queue);
+
+/**
  * @brief Get the size of queue.
  * @param queue A pointer to a queue.
  * @return The size of the queue.
@@ -53,13 +60,6 @@ int getSizeOfQueue(Queue* queue);
  * return 1 if is Empty, 0 otherwise.
  */
 char isEmpty(Queue* queue);
-
-/**
- * @brief Remove the first element of the queue.
- * @param queue A pointer to a queue.
- * @return A pointer to the element.
- */
-void* dequeue(Queue* queue);
 
 /**
  * @brief Delete the queue, freeing memory.
