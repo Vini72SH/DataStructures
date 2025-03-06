@@ -1,7 +1,9 @@
 /**
  * @file queue.hpp
  * @brief generic queue struct
- * @details This is an implementation of a generic queue
+ * @details This is an implementation of a generic queue that uses the FIFO
+ * policy. To enqueue and dequeue values, it is necessary to pass a pointer to a
+ * memory region, so that the copy is done efficiently.
  */
 
 #ifndef QUEUE_H
@@ -34,18 +36,23 @@ struct Queue {
 Queue* allocateQueue(unsigned int sizeOfElement);
 
 /**
- * @brief Insert an element in the queue.
+ * @brief Inserts an element at the end of the queue, allocating memory for it
+ * in the queue (FIFO)
  * @param queue A pointer to a queue.
- * @param element The element to insert.
+ * @param elementInput The element to insert.
+ * @return 1 if successful, 0 otherwise.
  */
-void enqueue(Queue* queue, void* element);
+char enqueue(Queue* queue, void* elementInput);
 
 /**
- * @brief Remove the first element of the queue.
+ * @brief Removes the first element from the queue and inserts it into the
+ * memory region (FIFO)
  * @param queue A pointer to a queue.
- * @return A pointer to the element. It is necessary to release manually.
+ * @param elementOutput A pointer to the memory region where the first element
+ * of the queue will be sent.
+ * @return 1 if successful, 0 otherwise.
  */
-void* dequeue(Queue* queue);
+char dequeue(Queue* queue, void* elementOutput);
 
 /**
  * @brief Get the size of queue.

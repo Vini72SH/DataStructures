@@ -12,22 +12,20 @@ Queue* allocateQueue(unsigned int sizeOfElement) {
     return newQueue;
 };
 
-void enqueue(Queue* queue, void* element) {
-    if (!(queue)) return;
+char enqueue(Queue* queue, void* elementInput) {
+    if (!(queue)) return 0;
 
     Node* aux;
     Node* newNode = malloc(sizeof(Node));
-    if (!(newNode)) return;
+    if (!(newNode)) return 0;
 
     newNode->next = NULL;
     newNode->element = malloc(queue->sizeOfElement);
 
     if (!(newNode->element)) {
         free(newNode);
-        return;
+        return 0;
     }
-
-    memcpy(newNode->element, element, queue->sizeOfElement);
 
     if (!(isEmpty(queue))) {
         aux = queue->end;
@@ -36,36 +34,27 @@ void enqueue(Queue* queue, void* element) {
         queue->start = newNode;
     }
 
+    memcpy(newNode->element, elementInput, queue->sizeOfElement);
     queue->end = newNode;
     queue->queueSize++;
+
+    return 1;
 };
 
-void* dequeue(Queue* queue) {
-    if (!(queue) || isEmpty(queue)) return NULL;
+char dequeue(Queue* queue, void* elementOutput) {
+    if (!(queue) || isEmpty(queue)) return 0;
 
     Node* aux = queue->start;
-    void* element = malloc(queue->sizeOfElement);
-    if (!(element)) {
-        queue->start = aux->next;
-        queue->queueSize--;
-
-        if (queue->queueSize == 0) queue->end = NULL;
-
-        free(aux->element);
-        free(aux);
-        return NULL;
-    }
-
-    memcpy(element, aux->element, queue->sizeOfElement);
     queue->start = aux->next;
     queue->queueSize--;
+    memcpy(elementOutput, aux->element, queue->sizeOfElement);
 
     if (getSizeOfQueue(queue) == 0) queue->end = NULL;
 
     free(aux->element);
     free(aux);
 
-    return element;
+    return 1;
 };
 
 int getSizeOfQueue(Queue* queue) { return queue->queueSize; };
