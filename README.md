@@ -17,7 +17,10 @@ Data structures are fundamental to computer science and play a key role in impro
 - **Queue**: A FIFO (First In, First Out) data structure.
 - **Stack**: A LIFO (Last In, First Out) data structure.
 - **Linked List**: A list of elements where each element points to the next.
+- **Doubly Linked Circular List**: A circular list of elements where each node points to its predecessor and successor.
 - **Binary Tree**: A tree structure where each node has at most two children.
+- **AVL Tree**: A balanced tree structure with AVL implementation.
+- **Red Black Tree**: A balanced tree structure with red-black implementation.
 - **Hash Table**: A data structure that associates keys with values for fast lookup.
 
 More structures will be added in the future, such as priority queues, graphs, and more.
@@ -32,3 +35,4 @@ More structures will be added in the future, such as priority queues, graphs, an
 ## Installation
 
 To use any of the data structures in this repository, simply clone the repository to your local machine or download the header and implementation.
+Make sure you include the header correctly in your project and statically link it through the compiler..
