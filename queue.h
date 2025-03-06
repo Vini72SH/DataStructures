@@ -65,7 +65,7 @@ unsigned int getSizeOfQueue(Queue* queue);
  * @param queue A pointer to a queue.
  * return 1 if is Empty, 0 otherwise.
  */
-char isEmpty(Queue* queue);
+int isQueueEmpty(Queue* queue);
 
 /**
  * @brief Delete the queue, freeing memory.

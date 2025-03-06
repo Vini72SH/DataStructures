@@ -27,7 +27,7 @@ int enqueue(Queue* queue, void* elementInput) {
         return 0;
     }
 
-    if (!(isEmpty(queue))) {
+    if (!(isQueueEmpty(queue))) {
         aux = queue->end;
         aux->next = newNode;
     } else {
@@ -42,7 +42,7 @@ int enqueue(Queue* queue, void* elementInput) {
 };
 
 int dequeue(Queue* queue, void* elementOutput) {
-    if (!(queue) || isEmpty(queue)) return 0;
+    if (!(queue) || isQueueEmpty(queue)) return 0;
 
     Node* aux = queue->start;
     queue->start = aux->next;
@@ -59,7 +59,7 @@ int dequeue(Queue* queue, void* elementOutput) {
 
 unsigned int getSizeOfQueue(Queue* queue) { return queue->queueSize; };
 
-char isEmpty(Queue* queue) { return (queue->queueSize == 0); };
+int isQueueEmpty(Queue* queue) { return (queue->queueSize == 0); };
 
 void deleteQueue(Queue* queue) {
     if (!queue) return;
