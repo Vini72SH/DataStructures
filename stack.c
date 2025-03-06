@@ -1,9 +1,8 @@
 #include "stack.h"
 
-#include <stdlib.h>
-#include <string.h>
-
 Stack* allocateStack(unsigned int sizeOfElement) {
+    if (sizeOfElement == 0) return NULL;
+
     Stack* newStack = malloc(sizeof(Stack));
     if (!(newStack)) return NULL;
 
@@ -36,7 +35,7 @@ int stack(Stack* stack, void* elementInput) {
 };
 
 int unstack(Stack* stack, void* elementOutput) {
-    if (!(stack) || isEmpty(stack)) return 0;
+    if (!(stack) || isStackEmpty(stack)) return 0;
 
     Node* aux = stack->top;
     stack->top = aux->next;
@@ -51,7 +50,7 @@ int unstack(Stack* stack, void* elementOutput) {
     return 1;
 };
 
-char isEmpty(Stack* stack) { return (stack->stackSize == 0); };
+int isStackEmpty(Stack* stack) { return (stack->stackSize == 0); };
 
 unsigned int getSizeOfStack(Stack* stack) { return stack->stackSize; };
 

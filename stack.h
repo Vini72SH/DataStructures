@@ -55,7 +55,7 @@ int unstack(Stack* stack, void* elementOutput);
  * @param stack A pointer to Stack.
  * @return 1 if is empty, 0 otherwise.
  */
-char isEmpty(Stack* stack);
+int isStackEmpty(Stack* stack);
 
 /**
  * @brief Get the size of Stack.
