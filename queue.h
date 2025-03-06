@@ -1,5 +1,5 @@
 /**
- * @file queue.hpp
+ * @file queue.h
  * @brief generic queue struct
  * @details This is an implementation of a generic queue that uses the FIFO
  * policy. To enqueue and dequeue values, it is necessary to pass a pointer to a
@@ -9,7 +9,6 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -42,7 +41,7 @@ Queue* allocateQueue(unsigned int sizeOfElement);
  * @param elementInput The element to insert.
  * @return 1 if successful, 0 otherwise.
  */
-char enqueue(Queue* queue, void* elementInput);
+int enqueue(Queue* queue, void* elementInput);
 
 /**
  * @brief Removes the first element from the queue and inserts it into the
@@ -52,14 +51,14 @@ char enqueue(Queue* queue, void* elementInput);
  * of the queue will be sent.
  * @return 1 if successful, 0 otherwise.
  */
-char dequeue(Queue* queue, void* elementOutput);
+int dequeue(Queue* queue, void* elementOutput);
 
 /**
  * @brief Get the size of queue.
  * @param queue A pointer to a queue.
  * @return The size of the queue.
  */
-int getSizeOfQueue(Queue* queue);
+unsigned int getSizeOfQueue(Queue* queue);
 
 /**
  * @brief The queue is empty?

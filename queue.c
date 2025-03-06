@@ -12,7 +12,7 @@ Queue* allocateQueue(unsigned int sizeOfElement) {
     return newQueue;
 };
 
-char enqueue(Queue* queue, void* elementInput) {
+int enqueue(Queue* queue, void* elementInput) {
     if (!(queue)) return 0;
 
     Node* aux;
@@ -41,7 +41,7 @@ char enqueue(Queue* queue, void* elementInput) {
     return 1;
 };
 
-char dequeue(Queue* queue, void* elementOutput) {
+int dequeue(Queue* queue, void* elementOutput) {
     if (!(queue) || isEmpty(queue)) return 0;
 
     Node* aux = queue->start;
@@ -57,7 +57,7 @@ char dequeue(Queue* queue, void* elementOutput) {
     return 1;
 };
 
-int getSizeOfQueue(Queue* queue) { return queue->queueSize; };
+unsigned int getSizeOfQueue(Queue* queue) { return queue->queueSize; };
 
 char isEmpty(Queue* queue) { return (queue->queueSize == 0); };
 
